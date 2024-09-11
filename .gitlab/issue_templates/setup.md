@@ -1,5 +1,5 @@
 
-/Title Board set-up
+/title Board set-up
 
 ## Summary
 
