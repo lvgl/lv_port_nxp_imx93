@@ -1,0 +1,65 @@
+From 7a139ec891eab944b6ac834bc96331f99fc6b7c2 Mon Sep 17 00:00:00 2001
+From: Hou Qi <qi.hou@nxp.com>
+Date: Wed, 1 Nov 2023 23:53:06 +0900
+Subject: [PATCH 09/19] V4L2VDA: Use correct plane size and bytesused
+
+Upstream-Status: Inappropriate [NXP specific]
+---
+ media/gpu/v4l2/v4l2_queue.cc | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/media/gpu/v4l2/v4l2_queue.cc b/media/gpu/v4l2/v4l2_queue.cc
+index 5394b21e5ff1d..ab044ab03c7e7 100644
+--- a/media/gpu/v4l2/v4l2_queue.cc
++++ b/media/gpu/v4l2/v4l2_queue.cc
+@@ -814,7 +814,10 @@ size_t V4L2WritableBufferRef::GetPlaneSize(const size_t plane) const {
+     return 0;
+   }
+ 
+-  return buffer_data_->v4l2_buffer_.m.planes[plane].length;
++  if (V4L2_TYPE_IS_MULTIPLANAR(buffer_data_->v4l2_buffer_.type))
++    return buffer_data_->v4l2_buffer_.m.planes[plane].length;
++  else
++    return buffer_data_->v4l2_buffer_.length;
+ }
+ 
+ void V4L2WritableBufferRef::SetPlaneSize(const size_t plane,
+@@ -874,7 +877,10 @@ void V4L2WritableBufferRef::SetPlaneBytesUsed(const size_t plane,
+     return;
+   }
+ 
+-  buffer_data_->v4l2_buffer_.m.planes[plane].bytesused = bytes_used;
++  if (V4L2_TYPE_IS_MULTIPLANAR(buffer_data_->v4l2_buffer_.type))
++    buffer_data_->v4l2_buffer_.m.planes[plane].bytesused = bytes_used;
++  else
++    buffer_data_->v4l2_buffer_.bytesused = bytes_used;
+ }
+ 
+ size_t V4L2WritableBufferRef::GetPlaneBytesUsed(const size_t plane) const {
+@@ -886,7 +892,10 @@ size_t V4L2WritableBufferRef::GetPlaneBytesUsed(const size_t plane) const {
+     return 0;
+   }
+ 
+-  return buffer_data_->v4l2_buffer_.m.planes[plane].bytesused;
++  if (V4L2_TYPE_IS_MULTIPLANAR(buffer_data_->v4l2_buffer_.type))
++    return buffer_data_->v4l2_buffer_.m.planes[plane].bytesused;
++  else
++    return buffer_data_->v4l2_buffer_.bytesused;
+ }
+ 
+ void V4L2WritableBufferRef::SetPlaneDataOffset(const size_t plane,
+@@ -993,7 +1002,10 @@ size_t V4L2ReadableBuffer::GetPlaneBytesUsed(const size_t plane) const {
+     return 0;
+   }
+ 
+-  return buffer_data_->v4l2_planes_[plane].bytesused;
++  if (V4L2_TYPE_IS_MULTIPLANAR(buffer_data_->v4l2_buffer_.type))
++    return buffer_data_->v4l2_planes_[plane].bytesused;
++  else
++    return buffer_data_->v4l2_buffer_.bytesused;
+ }
+ 
+ size_t V4L2ReadableBuffer::GetPlaneDataOffset(const size_t plane) const {
+-- 
+2.34.1
+
