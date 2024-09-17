@@ -8,14 +8,12 @@ Find the complete documentation [here](https://www.nxp.com/docs/en/user-guide/IM
 
 - Required packages to install on host:
   ```bash
-  sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpec xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1
+  sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1
   ```
 
 - (optional) If you already have the "repo utility", skip this step.
   ```bash
-  mkdir ~/bin # this step may not be needed if the bin folder already exists
-  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-  chmod a+x ~/bin/repo
+  sudo apt install repo  
   ```
 
   Then add the bin folder created to the path
