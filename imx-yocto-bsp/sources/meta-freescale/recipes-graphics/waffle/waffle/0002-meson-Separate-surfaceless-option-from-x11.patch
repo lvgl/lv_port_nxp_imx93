@@ -1,0 +1,40 @@
+From 12ac4372cc6a66e83b61f8510bdaa4f11c72113d Mon Sep 17 00:00:00 2001
+From: Tom Hochstein <tom.hochstein@nxp.com>
+Date: Wed, 22 Apr 2020 14:08:36 -0500
+Subject: [PATCH] meson: Separate surfaceless option from x11
+
+Allow surfaceless build separate from the x11 option.
+Also require gbm for surfaceless build.
+
+Upstream-Status: Pending
+
+Signed-off-by: Tom Hochstein <tom.hochstein@nxp.com>
+
+---
+ meson.build | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/meson.build
++++ b/meson.build
+@@ -72,6 +72,7 @@ dep_udev = _dep_null
+ dep_cocoa = _dep_null
+ dep_core_foundation = _dep_null
+ dep_gl_headers = _dep_null
++dep_surfaceless = _dep_null
+ 
+ # Get dependencies
+ if build_wgl
+@@ -96,10 +97,11 @@ else
+   dep_egl = dependency('egl', required : get_option('gbm'))
+   dep_gbm = dependency('gbm', required : get_option('gbm'))
+   dep_udev = dependency('libudev', required : get_option('gbm'))
++  dep_surfaceless_egl = dependency('egl', required : get_option('surfaceless_egl'))
++  dep_surfaceless_gbm = dependency('gbm', required : get_option('surfaceless_egl'))
+   build_gbm = dep_egl.found() and dep_gbm.found() and dep_udev.found()
+ 
+-  dep_egl = dependency('egl', required : get_option('surfaceless_egl'))
+-  build_surfaceless = dep_egl.found()
++  build_surfaceless = dep_surfaceless_egl.found() and dep_surfaceless_gbm.found()
+ 
+   dep_egl = dependency('egl', required : get_option('wayland'))
+   dep_wayland_client = dependency(

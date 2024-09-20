@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siemens/kas/master/kas/schema-kas.json
+
+header:
+  version: 14
+  includes:
+    - ci/meta-virtualization.yml
+
+local_conf_header:
+  meta-virt: |
+    DISTRO_FEATURES:append = " virtualization xen"
+
+target:
+  - xen-image-minimal

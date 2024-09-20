@@ -1,0 +1,104 @@
+154897 10:38:54.238161 --- Starting bitbake server pid 154897 at 2024-09-15 10:38:54.238146 ---
+154897 10:38:54.239171 Started bitbake server pid 154897
+154897 10:38:54.239294 Entering server connection loop
+154897 10:38:54.239307 Lockfile is: /home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/build/bitbake.lock
+Socket is /home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/build/bitbake.sock (True)
+154897 10:38:54.239560 Accepting [<socket.socket fd=6, family=1, type=1, proto=0, laddr=bitbake.sock>] ([])
+154897 10:38:54.239873 Processing Client
+154897 10:38:54.239890 Connecting Client
+154897 10:38:54.240038 Running command ['setFeatures', [2, 1]]
+154897 10:38:54.240059 Sending reply (None, None)
+154897 10:38:54.240097 Command Completed (socket: True)
+154897 10:38:54.240610 Running command ['updateConfig', {'halt': True, 'force': False, 'invalidate_stamp': None, 'dry_run': False, 'dump_signatures': [], 'extra_assume_provided': [], 'profile': False, 'prefile': [], 'postfile': [], 'server_timeout': None, 'nosetscene': False, 'setsceneonly': False, 'skipsetscene': False, 'runall': [], 'runonly': None, 'writeeventlog': None, 'build_verbose_shell': False, 'build_verbose_stdout': False, 'default_loglevel': 20, 'debug_domains': {}}, {'SHELL': '/bin/bash', 'BB_ENV_PASSTHROUGH_ADDITIONS': 'ALL_PROXY BBPATH_EXTRA BB_LOGCONFIG BB_NO_NETWORK BB_NUMBER_THREADS BB_SETSCENE_ENFORCE BB_SRCREV_POLICY DISTRO FTPS_PROXY FTP_PROXY GIT_PROXY_COMMAND HTTPS_PROXY HTTP_PROXY MACHINE NO_PROXY PARALLEL_MAKE SCREENDIR SDKMACHINE SOCKS5_PASSWD SOCKS5_USER SSH_AGENT_PID SSH_AUTH_SOCK STAMPS_DIR TCLIBC TCMODE all_proxy ftp_proxy ftps_proxy http_proxy https_proxy no_proxy ', 'SSH_AUTH_SOCK': '/run/user/1001/keyring/ssh', 'PWD': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp', 'LOGNAME': 'rossierd', 'HOME': '/home/rossierd', 'BBPATH': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/build', 'USER': 'rossierd', 'PATH': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/scripts:/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/bin:/home/rossierd/.local/bin:/home/rossierd/.cargo/bin:/home/rossierd/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'LC_ALL': 'en_US.UTF-8', 'SESSION_MANAGER': 'local/rossierd-xps-15-9520:@/tmp/.ICE-unix/4190,unix/rossierd-xps-15-9520:/tmp/.ICE-unix/4190', 'QT_ACCESSIBILITY': '1', 'COLORTERM': 'truecolor', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-gnome-xorg:/etc/xdg', 'XDG_MENU_PREFIX': 'gnome-', 'OE_ADDED_PATHS': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/scripts:/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/bin:', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'MANDATORY_PATH': '/usr/share/gconf/gnome-xorg.mandatory.path', 'LC_ADDRESS': 'fr_CH.UTF-8', 'LC_NAME': 'fr_CH.UTF-8', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'XMODIFIERS': '@im=ibus', 'DESKTOP_SESSION': 'gnome-xorg', 'LC_MONETARY': 'fr_CH.UTF-8', 'GTK_MODULES': 'gail:atk-bridge', 'XDG_SESSION_DESKTOP': 'gnome-xorg', 'XDG_SESSION_TYPE': 'x11', 'GPG_AGENT_INFO': '/run/user/1001/gnupg/S.gpg-agent:0:1', 'SYSTEMD_EXEC_PID': '4247', 'XAUTHORITY': '/run/user/1001/gdm/Xauthority', 'WINDOWPATH': '2', 'USERNAME': 'rossierd', 'IM_CONFIG_PHASE': '1', 'LC_PAPER': 'fr_CH.UTF-8', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90::ow=103;30;01', 'XDG_CURRENT_DESKTOP': 'GNOME', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1001.slice/user@1001.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'VTE_VERSION': '7600', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/f0ac831f_8f48_4884_805b_09571b417a8a', 'QTWEBENGINE_DICTIONARIES_PATH': '/usr/share/hunspell-bdic/', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'XDG_SESSION_CLASS': 'user', 'PYTHONPATH': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib:/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib:/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib:', 'TERM': 'xterm-256color', 'LC_IDENTIFICATION': 'fr_CH.UTF-8', 'DEFAULTS_PATH': '/usr/share/gconf/gnome-xorg.default.path', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'LIBVIRT_DEFAULT_URI': 'qemu:///system', 'GNOME_TERMINAL_SERVICE': ':1.139', 'DISPLAY': ':0', 'SHLVL': '1', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'LC_TELEPHONE': 'fr_CH.UTF-8', 'QT_IM_MODULE': 'ibus', 'LC_MEASUREMENT': 'fr_CH.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1001', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com ', 'LC_TIME': 'fr_CH.UTF-8', 'XDG_DATA_DIRS': '/usr/share/gnome-xorg:/usr/share/gnome:/home/rossierd/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'GDMSESSION': 'gnome-xorg', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1001/bus', 'BUILDDIR': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/build', 'LC_NUMERIC': 'fr_CH.UTF-8', 'OLDPWD': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/build', '_': '/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/bin/bitbake'}, ['/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/bin/bitbake', 'core-image-minimal']]
+154897 10:38:54.802512 Base config valid
+/usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=154897) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  self.pid = os.fork()
+154897 10:38:54.828555 Sending reply (None, None)
+154897 10:38:54.828608 Command Completed (socket: True)
+154897 10:38:54.828783 Running command ['getVariable', 'BBINCLUDELOGS']
+154897 10:38:54.828837 Sending reply ('yes', None)
+154897 10:38:54.828857 Command Completed (socket: True)
+154897 10:38:54.828980 Running command ['getVariable', 'BBINCLUDELOGS_LINES']
+154897 10:38:54.828997 Sending reply (None, None)
+154897 10:38:54.829008 Command Completed (socket: True)
+154897 10:38:54.829111 Running command ['getSetVariable', 'BB_CONSOLELOG']
+154897 10:38:54.829173 Sending reply ('/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/build/tmp/log/cooker/imx6qdlsabresd/20240915083854.log', None)
+154897 10:38:54.829190 Command Completed (socket: True)
+154897 10:38:54.829285 Running command ['getSetVariable', 'BB_LOGCONFIG']
+154897 10:38:54.829300 Sending reply (None, None)
+154897 10:38:54.829314 Command Completed (socket: True)
+154897 10:38:54.830435 Running command ['getUIHandlerNum']
+154897 10:38:54.830461 Sending reply (1, None)
+154897 10:38:54.830488 Command Completed (socket: True)
+154897 10:38:54.830614 Running command ['setEventMask', 1, 20, {'BitBake.RunQueue.HashEquiv': 19, 'BitBake.SigGen.HashEquiv': 19}, ['bb.runqueue.runQueueExitWait', 'bb.event.LogExecTTY', 'logging.LogRecord', 'bb.build.TaskFailed', 'bb.build.TaskBase', 'bb.event.ParseStarted', 'bb.event.ParseProgress', 'bb.event.ParseCompleted', 'bb.event.CacheLoadStarted', 'bb.event.CacheLoadProgress', 'bb.event.CacheLoadCompleted', 'bb.command.CommandFailed', 'bb.command.CommandExit', 'bb.command.CommandCompleted', 'bb.cooker.CookerExit', 'bb.event.MultipleProviders', 'bb.event.NoProvider', 'bb.runqueue.sceneQueueTaskStarted', 'bb.runqueue.runQueueTaskStarted', 'bb.runqueue.runQueueTaskFailed', 'bb.runqueue.sceneQueueTaskFailed', 'bb.event.BuildBase', 'bb.build.TaskStarted', 'bb.build.TaskSucceeded', 'bb.build.TaskFailedSilent', 'bb.build.TaskProgress', 'bb.event.ProcessStarted', 'bb.event.ProcessProgress', 'bb.event.ProcessFinished']]
+154897 10:38:54.830644 Sending reply (True, None)
+154897 10:38:54.830659 Command Completed (socket: True)
+154897 10:38:54.830825 Running command ['getVariable', 'BB_DEFAULT_TASK']
+154897 10:38:54.830838 Sending reply ('build', None)
+154897 10:38:54.830852 Command Completed (socket: True)
+154897 10:38:54.830877 Running command ['setConfig', 'cmd', 'build']
+154897 10:38:54.830886 Sending reply (None, None)
+154897 10:38:54.830897 Command Completed (socket: True)
+154897 10:38:54.831030 Running command ['buildTargets', ['core-image-minimal'], 'build']
+154897 10:38:54.831059 Registering idle function <bound method Command.runAsyncCommand of <bb.command.Command object at 0x76336cfb64b0>>
+154897 10:38:54.831063 Sending reply (True, None)
+154897 10:38:54.831075 Command Completed (socket: True)
+154897 10:38:54.865541 Parsing started
+/usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=154897) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  self.pid = os.fork()
+/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/meta/classes-global/package.bbclass:389: SyntaxWarning: invalid escape sequence '\.'
+  import oe.packagedata
+/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/meta/classes-global/package.bbclass:396: SyntaxWarning: invalid escape sequence '\.'
+  if [ -x /sbin/ldconfig ]; then /sbin/ldconfig ; fi
+/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/meta/classes-global/package.bbclass:404: SyntaxWarning: invalid escape sequence '\.'
+  }
+/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/meta/classes-global/package.bbclass:411: SyntaxWarning: invalid escape sequence '\.'
+  }
+/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/meta/classes-global/package.bbclass:418: SyntaxWarning: invalid escape sequence '\.'
+  pkglibdeps = oe.package.read_libdep_files(d)
+154897 10:38:55.593553 Parse cache valid
+--2024-09-15 10:39:27--  http://downloads.yoctoproject.org/releases/uninative/4.4/x86_64-nativesdk-libc-4.4.tar.xz
+Resolving downloads.yoctoproject.org (downloads.yoctoproject.org)... 198.145.29.62
+Connecting to downloads.yoctoproject.org (downloads.yoctoproject.org)|198.145.29.62|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6914148 (6.6M) [application/octet-stream]
+Saving to: ‘/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/downloads//uninative/d81c54284be2bb886931fc87281d58177a2cd381cf99d1981f8923039a72a302/x86_64-nativesdk-libc-4.4.tar.xz.tmp’
+
+
+2024-09-15 10:39:29 (4.37 MB/s) - ‘/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/downloads//uninative/d81c54284be2bb886931fc87281d58177a2cd381cf99d1981f8923039a72a302/x86_64-nativesdk-libc-4.4.tar.xz.tmp’ saved [6914148/6914148]
+
+/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/bin/bitbake-worker:210: DeprecationWarning: This process (pid=155399) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib/hashserv/sqlite.py:448: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(query, data)
+154897 10:39:30.523658 Registering idle function <function BBCooker.buildTargets.<locals>.buildTargetsIdle at 0x7633593c8cc0>
+154897 10:39:30.523693 Removing idle function <bound method Command.runAsyncCommand of <bb.command.Command object at 0x76336cfb64b0>>
+154897 10:42:33.326631 Running command ['stateForceShutdown']
+154897 10:42:33.326757 Sending reply (None, None)
+154897 10:42:33.326834 Command Completed (socket: True)
+154897 10:42:33.580655 Processing Client
+154897 10:42:33.580728 Disconnecting Client (socket: True)
+154897 10:42:34.372679 Exception Traceback (most recent call last):
+  File "/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib/bb/server/process.py", line 435, in idle_thread_internal
+    retval = function(self, data, False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib/bb/cooker.py", line 1487, in buildTargetsIdle
+    retval = rq.execute_runqueue()
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib/bb/runqueue.py", line 1637, in execute_runqueue
+    return self._execute_runqueue()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib/bb/runqueue.py", line 1541, in _execute_runqueue
+    bb.event.check_for_interrupts(self.cooker.data)
+  File "/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/sources/poky/bitbake/lib/bb/event.py", line 98, in check_for_interrupts
+    raise bb.BBHandledException()
+bb.BBHandledException
+ broke the idle_thread, exiting
+154897 10:43:03.581024 Idle loop didn't finish queued commands after 30s, exiting.
+154897 10:43:03.581601 Parse cache invalidated
+154897 10:43:03.581649 No timeout, exiting.
+154897 10:43:03.581698 Idle thread terminated, main thread exiting too
+154897 10:43:03.682066 Exiting (socket: True)
+154897 10:43:03.714855 Lockfile directory gone, exiting.
+ERROR: Idle thread terminated, main thread exiting too
+sys:1: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/rossierd/edgemtech/boards/lvgl_certification/imx93/imx-yocto-bsp/build/bitbake-cookerdaemon.log' mode='a+' encoding='UTF-8'>
