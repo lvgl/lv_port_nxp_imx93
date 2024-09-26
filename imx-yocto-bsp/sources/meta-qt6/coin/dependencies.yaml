@@ -1,5 +1,0 @@
-product_dependency:
-  ../../qt/qt5:
-      ref: "dev"
-dependencies:
-  {}

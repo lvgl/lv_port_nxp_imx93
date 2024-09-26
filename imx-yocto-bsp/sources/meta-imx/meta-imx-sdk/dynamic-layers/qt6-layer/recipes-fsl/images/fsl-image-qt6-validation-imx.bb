@@ -1,1 +1,0 @@
-imx-image-full.bb

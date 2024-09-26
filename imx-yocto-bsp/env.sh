@@ -1,2 +1,0 @@
-
-source setup-environment build

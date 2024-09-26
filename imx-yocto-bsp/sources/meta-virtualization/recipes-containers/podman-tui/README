@@ -1,6 +1,0 @@
-
-# to get the graphics to draw:
-
-a) export LC_ALL="en_CA.UTF-8"
-b) don't run under screen
-

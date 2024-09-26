@@ -1,1 +1,0 @@
-RDEPENDS:${PN} += "nativesdk-glslang"
