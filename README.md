@@ -133,7 +133,7 @@ The EMMC on the board should come flashed with an image.
 
   ![boot_mode_sw1301](./docs/img/boot_mode_sw1301.jpg)
 
-- The following picture shows the jumper setup for J704, J703 and J702: 
+- git@github.com:lvgl/lv_port_nxp_imx93.gitThe following picture shows the jumper setup for J704, J703 and J702: 
   ![imx93_jumpers_j70s](./docs/img/imx93_jumpers_j70s.png)
 
 - Board setup:
@@ -188,9 +188,7 @@ There are two options:
 - **Option 2**: download a pre-built image: 
   The board comes supplied with an image on the EMMC. First we replicate this setup on the SD card: 
 
-  - Download the pre-built images and binaries here :
-    https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
-    Choose the linux version and download the image for i.MX93 EVK
+  - Download the pre-built images and binaries [here](https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX). Choose the linux version and download the image for i.MX93 EVK
 
 After downloading or building the image, flash it on the SD card:
 
