@@ -1,3 +1,3 @@
-lv_port_linux/bin
-lv_port_linux/build-arm64
-lv_port_linux/protocols
+lvgl_port_linux/bin
+lvgl_port_linux/build-arm64
+lvgl_port_linux/protocols
