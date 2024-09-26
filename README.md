@@ -119,7 +119,7 @@ Any of these buffering strategies can be used with multiple threads to render th
 
 ### Hardware setup
 
-This [document](https://www.nxp.com/docs/en/user-guide/IMX_YOCTO_PROJECT_USERS_GUIDE.pdf) from TI provides detailed information for the hardware setup. The following guide is inspired from this.
+This [document](https://www.nxp.com/docs/en/user-guide/IMX_YOCTO_PROJECT_USERS_GUIDE.pdf) from NXP provides detailed information for the hardware setup. The following guide is inspired from this.
 
 The display used in this guide is the lvds pannel, with a resolution of 1280x800.
 
