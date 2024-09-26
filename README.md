@@ -291,18 +291,14 @@ Run the executable on the target:
 
   ```bash
   ssh root@<BOARD_IP>
-  
-  ## stop default presentation screen if it is running
-  systemctl stop ti-apps-launcher
   ######################################
   ## WARNING: do not stop these services if using wayland demo
   systemctl stop weston.socket 
   systemctl stop weston.service 
   ######################################
-  
   ./lvgl-app
   ```
-
+  
   
 
 ### Change configuration
