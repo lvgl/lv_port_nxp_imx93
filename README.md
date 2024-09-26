@@ -144,73 +144,77 @@ The EMMC on the board should come flashed with an image.
 
 The board should boot and the screen should display something
 
-#### Yocto build image
-
-- Required packages to install on host:
-
-  ```bash
-  sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1
-  ```
-
-- (optional) If you already have the "repo utility", skip this step.
-
-  ```bash
-  sudo apt install repo  
-  ```
-
-- Now clone the yocto project
-
-  ```bash
-  mkdir imx-yocto-bsp
-  cd imx-yocto-bsp
-  repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-scarthgap -m imx-6.6.23-2.0.0.xml
-  repo sync
-  ```
-
-- Build the image
-
-  ```bash
-  # Use the script to setup the build folder and modify the conf files
-  DISTRO=fsl-imx-wayland MACHINE=imx93-11x11-lpddr4x-evk source imx-setup-release.sh -b build-media
-  # Build the image
-  bitbake imx-image-multimedia
-  ```
-
-- Copy the image on the SD card:
-
-  ```bash
-  zstdcat imx-image-multimedia-imx93-11x11-lpddr4x-evk.rootfs-20240918104911.wic.zst | sudo dd of=/dev/sda bs=1M conv=fsync status=progress
-  ```
 
 
-#### Pre-built image
+#### Flash SD card
 
-The board comes supplied with an image on the EMMC. First we replicate this setup on the SD card: 
+There are two options: 
 
-- Download the pre-built images and binaries here :
-  https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
-  Choose the linux version and download the image for i.MX 93 EVK
+- **Option 1**: build Yocto image: 
 
-- Then unzip the content and flash the image (.wic) ont the SD card
-  Before flashing on the SD, check with lsblk where the SD card was mounted
+  - Required packages to install on host:
 
-  ```bash
-  # Replace of=/dev/sda with the correct mounted name
-  sudo dd if=tisdk-default-image-am62pxx-evm.rootfs_v2.wic of=/dev/sda bs=4M status=progress
-  ```
+    ```bash
+    sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1
+    ```
 
-- The SD card has no w 2 partitions, boot and rootfs. Now copy the bootloader binary that should be launched on the board in the /boot partition. The bootloader binary is located in the folder, next to the ".wic" file.
+    - (optional) If you already have the "repo utility", skip this step.
 
-#### Use the correct dtb
 
-Mount the image and on the boot partition, use the dtb called "imx93-11x11-evk-boe-wxga-lvds-panel.dtb"
+    ```bash
+    sudo apt install repo  
+    ```
+
+  - Clone the yocto project
+
+    ```bash
+    mkdir imx-yocto-bsp
+    cd imx-yocto-bsp
+    repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-scarthgap -m imx-6.6.23-2.0.0.xml
+    repo sync
+    ```
+
+  - Build the image
+
+    ```bash
+    # Use the script to setup the build folder and modify the conf files
+    DISTRO=fsl-imx-wayland MACHINE=imx93-11x11-lpddr4x-evk source imx-setup-release.sh -b build-media
+    # Build the image
+    bitbake imx-image-multimedia
+    ```
+
+
+- **Option 2**: download a pre-built image: 
+  The board comes supplied with an image on the EMMC. First we replicate this setup on the SD card: 
+
+  - Download the pre-built images and binaries here :
+    https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
+    Choose the linux version and download the image for i.MX 93 EVK
+
+
+  - Then unzip the content and flash the image (.wic) ont the SD card
+    Before flashing on the SD, check with lsblk where the SD card was mounted
+
+    ```bash
+    # Replace of=/dev/sda with the correct mounted name
+    sudo dd if=tisdk-default-image-am62pxx-evm.rootfs_v2.wic of=/dev/sda bs=4M status=progress
+    ```
+
+
+After downloading or building the image, flash it on the SD card:
+
+```bash
+zstdcat imx-image-multimedia-imx93-11x11-lpddr4x-evk.rootfs-20240918104911.wic.zst | sudo dd of=/dev/sda bs=1M conv=fsync status=progress
+```
+
+Use the correct dtb. Mount the image and on the boot partition, use the dtb called "imx93-11x11-evk-boe-wxga-lvds-panel.dtb"
 
 ```bash
 # cd into the boot partition of the SD card mounted and do the following command
 cp imx93-11x11-evk-boe-wxga-lvds-panel.dtb imx93-11x11-evk.dtb
 ```
 
-You also can apply this modification using the file manager.
+This modification can also be applied using the file manager.
 
 
 
