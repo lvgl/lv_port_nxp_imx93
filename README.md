@@ -133,7 +133,7 @@ The EMMC on the board should come flashed with an image.
 
   ![boot_mode_sw1301](./docs/img/boot_mode_sw1301.jpg)
 
-- git@github.com:lvgl/lv_port_nxp_imx93.gitThe following picture shows the jumper setup for J704, J703 and J702: 
+- The following picture shows the jumper setup for J704, J703 and J702: 
   ![imx93_jumpers_j70s](./docs/img/imx93_jumpers_j70s.png)
 
 - Board setup:
