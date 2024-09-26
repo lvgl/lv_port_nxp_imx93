@@ -190,18 +190,7 @@ There are two options:
 
   - Download the pre-built images and binaries here :
     https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
-    Choose the linux version and download the image for i.MX 93 EVK
-  
-  
-    - Then unzip the content and flash the image (.wic) ont the SD card
-      Before flashing on the SD, check with lsblk where the SD card was mounted
-  
-      ```bash
-      # Replace of=/dev/sda with the correct mounted name
-      sudo dd if=tisdk-default-image-am62pxx-evm.rootfs_v2.wic of=/dev/sda bs=4M status=progress
-      ```
-  
-
+    Choose the linux version and download the image for i.MX93 EVK
 
 After downloading or building the image, flash it on the SD card:
 
@@ -226,9 +215,9 @@ This guide was tested on Ubuntu 22.04 host.
 
 #### Install docker
 
-- Follow this [tutorial](https://github.com/lvgl/lv_port_texas_sk-am62p-lp/blob/5-documentation/https:/www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) to install and setup docker on your system.
+- Follow this [tutorial](https:/www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) to install and setup docker on your system.
 
-- Support to run arm64 docker containers on the host:
+- Support to run ARM64 docker containers on the host:
 
   ```bash
   sudo apt-get install qemu-user-static
@@ -255,8 +244,8 @@ Build the docker image and the lvgl benchmark application:
 
 ```bash
 cd lv_port_nxp_imx93
-./scripts/docker_setup.sh --build
-./scripts/docker_setup.sh --run
+./scripts/docker_setup.sh --create-image
+./scripts/docker_setup.sh --build-app
 ```
 
 Run the executable on the target:
