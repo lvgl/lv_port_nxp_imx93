@@ -4,7 +4,7 @@
 
 ## Overview
 
-This guide provides steps to setup the  i.MX 93 Evaluation Kit and to cross cross-compile an LVGL application to run it the target.
+This guide provides steps to setup the  i.MX 93 Evaluation Kit and to cross-compile an LVGL application to run it the target.
 
 
 
@@ -81,6 +81,9 @@ Any of these buffering strategies can be used with multiple threads to render th
   - Arm® Ethos™ U-65 MicroNPU
   - EdgeLock® Secure Enclave
 - **RAM**: 2 GB LPDDR4X / LPDDR4
+  - 16 bits data bus with inline EEC
+  - 3.7 GT/s
+
 - **Flash**: 
   - 16 GB eMMC5.1
   - MicroSD Slot
@@ -138,7 +141,7 @@ The EMMC on the board should come flashed with an image.
   <p align="center"><img src="./docs/img/imx93_board_setup.jpg"></p>
   
   - Connect the screen to the 
-  - Connect RJ45 on any ethernet port
+  - Connect RJ45 on any ethernet port. The board must be connected on the same LAN than the host.
   - Connect USB-C power (black USB - J301)
   - (Optional) Connect USB-C debug (gray - J401)
 
@@ -158,11 +161,9 @@ There are two options:
     sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1
     ```
 
-    - (optional) If you already have the "repo utility", skip this step.
-
-
+  - (optional) If you already have the "repo utility", skip this step.
     ```bash
-    sudo apt install repo  
+    sudo apt install repo
     ```
 
   - Clone the yocto project
@@ -190,15 +191,16 @@ There are two options:
   - Download the pre-built images and binaries here :
     https://www.nxp.com/design/design-center/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
     Choose the linux version and download the image for i.MX 93 EVK
-
-
-  - Then unzip the content and flash the image (.wic) ont the SD card
-    Before flashing on the SD, check with lsblk where the SD card was mounted
-
-    ```bash
-    # Replace of=/dev/sda with the correct mounted name
-    sudo dd if=tisdk-default-image-am62pxx-evm.rootfs_v2.wic of=/dev/sda bs=4M status=progress
-    ```
+  
+  
+    - Then unzip the content and flash the image (.wic) ont the SD card
+      Before flashing on the SD, check with lsblk where the SD card was mounted
+  
+      ```bash
+      # Replace of=/dev/sda with the correct mounted name
+      sudo dd if=tisdk-default-image-am62pxx-evm.rootfs_v2.wic of=/dev/sda bs=4M status=progress
+      ```
+  
 
 
 After downloading or building the image, flash it on the SD card:
@@ -259,9 +261,9 @@ cd lv_port_nxp_imx93
 
 Run the executable on the target:
 
-- Get the IP of the target board:
+- The board got an IP from the network manager. Both devices (the board and the host) should on the same network. Get the IP of the target board. 
 
-  - Option 1: from the UART, on the board:
+  - **Option 1:** from the UART, on the board:
 
     ```bash
     sudo picocom -b 115200 /dev/ttyUSB0
@@ -270,17 +272,15 @@ Run the executable on the target:
     ip a
     ```
 
-  - Option 2: Get the IP from your host with nmap
+  - **Option 2:** Get the IP from your host with nmap. 
 
     ```bash
-    ## Install nmap if it is not yet on your system
-    sudo apt install nmap
     ## Find the IP of the board. You need to know your ip (ifconfig or ip a)
     ## HOST_IP should be built like this :
     ## If the ip is 192.168.1.86, in the following command HOST_IP = 192.168.1.0/24
     nmap -sn <HOST_IP>/24 | grep imx93-11x11-lpddr4x-evk   
     ```
-
+  
 - Then transfer the executable on the board:
 
   ```
@@ -303,7 +303,7 @@ Run the executable on the target:
 
 ### Change configuration
 
-Some configurations are provided in the folder `lvgl_conf_example` .
+Some configurations are provided in the folder `lvgl_conf_example` . For more details about the `lv_conf.h` options, you can have a look to [lvgl documentation]()
 
 The default configuration used is lv_conf_fb_4_threads.h. To change the configuration, modify the `lvgl_port_linux/lv_conf.h` file with the desired configuration.
 
@@ -321,13 +321,18 @@ Default is for fbdev backend. Only set 1 of these options to "ON" and ensure it'
 
 The folder `lvgl_port_linux` is an example of an application using LVGL.
 
-LVGL is integrated as a submodule in the folder. To change the version of LVGL, modify the submodule properties in the file `.gitmodules`.
+LVGL is integrated as a submodule in the folder. To change the version of the library:
+
+```bash
+cd lvgl_port_linux
+git checkout <branch_name_or_commit_hash>
+```
 
 The file `main.c` is the default application provided and is configured to run the benchmark demo provided by LVGL library.
 
 The main steps to create your own application are:
 
-- Modify `main.c`
+- Modify `main.c` (see [LVGL examples](https://docs.lvgl.io/master/examples.html#get-started))
 - Add any folders and files to extend the functionalities
 - Update `Dockerfile` to add any package
 - Modify `CMakeLists.txt` provided file to ensure all the required files are compiled and linked
