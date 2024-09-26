@@ -5,7 +5,7 @@ project(lvgl)
 # be sure to also enable the selected driver in lv_conf.h
 option(LV_USE_WAYLAND "Use the wayland client backend" OFF)
 option(LV_USE_SDL "Use the SDL backend" OFF)
-option(LV_USE_DRM "Use the libdrm backend" ON)
+option(LV_USE_DRM "Use the libdrm backend" OFF)
 
 set(CMAKE_C_STANDARD 99) # LVGL officially supports C99 and above
 set(CMAKE_CXX_STANDARD 17) #C17
