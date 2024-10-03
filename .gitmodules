@@ -1,4 +1,4 @@
 [submodule "lvgl_port_linux/lvgl"]
 	path = lvgl_port_linux/lvgl
 	url = https://github.com/lvgl/lvgl.git
-	branch = release/v9.2
+	branch = master
