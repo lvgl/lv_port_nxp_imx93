@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:12
 
 # Set environment variables to avoid interactive prompts during package installations
 ENV DEBIAN_FRONTEND=noninteractive
