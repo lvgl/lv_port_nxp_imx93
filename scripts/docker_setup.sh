@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$ROOT_DIR"
 
+# Check if the correct argument is passed
 if [[ "$1" == "--create-image" ]]; then
     echo "Building the Docker container..."
     docker build --platform linux/arm64/v8 -t lvgl-build-arm64-image . 
