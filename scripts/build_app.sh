@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /app/lvgl_port_linux
+cd /app/lv_benchmark
 
 cmake -B build-arm64 -S . \
       -DCMAKE_CXX_FLAGS="-O3" \
