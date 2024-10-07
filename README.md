@@ -248,7 +248,7 @@ cd lv_port_nxp_imx93
 
 Run the executable on the target:
 
-- The board got an IP from the network manager. Both devices (the board and the host) should on the same network. Get the IP of the target board. 
+- The board got an IP from DHCP. Both devices (the board and the host) should on the same network. Get the IP of the target board. 
 
   - **Option 1:** from the UART, on the board:
 
@@ -337,7 +337,28 @@ If there is any problem with the output folder generated permissions, modify the
 sudo chown -R $(whoami):$(whoami) lvgl_port_linux/bin
 ```
 
+### Fbdev example runtime error
 
+This error can be printed when running the application: 
+
+```bash
+[Warn]	(1382.767, +37)	 lv_display_refr_timer: No draw buffer lv_refr.c:374
+[Warn]	(1382.804, +37)	 lv_display_refr_timer: No draw buffer lv_refr.c:374
+[Warn]	(1382.841, +37)	 lv_display_refr_timer: No draw buffer lv_refr.c:374
+[Warn]	(1382.878, +37)	 lv_display_refr_timer: No draw buffer lv_refr.c:374
+```
+
+To fix the issue find the existing fbdev available: 
+
+```bash
+ls /dev/fb*
+```
+
+Export the variable to match the fbdev name: 
+
+```bash
+export LV_LINUX_FBDEV_DEVICE=/dev/fb0
+```
 
 ### Wayland example runtime error
 
