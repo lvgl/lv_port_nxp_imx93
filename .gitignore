@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+lv_benchmark/bin
+lv_benchmark/build-arm64
+lv_benchmark/protocols
