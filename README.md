@@ -232,6 +232,22 @@ Clone the repository:
 git clone --recurse-submodules https://github.com/lvgl/lv_port_nxp_imx93.git
 ```
 
+**IMPORTANT**: 
+
+- default application from lv_port_linux runs the widget demo. To run the benchmark demo, modify `lv_port_linux/main.c` : 
+
+  ```c
+  /*Create a Demo*/
+  // lv_demo_widgets();
+  // lv_demo_widgets_start_slideshow();
+  lv_demo_benchmark();
+  ```
+
+- The default lv_conf.h might not be the best configuration for the board. Feel free to replace the default lv_conf.h with one of the provided configurations in `lv_conf_example` folder.
+
+  ```bash
+  cp lv_conf_example/lv_conf_fb_2_threads.h lv_port_linux/lv_conf.h
+  ```
 Build the docker image and the lvgl benchmark application:
 
 ```bash
