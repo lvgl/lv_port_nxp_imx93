@@ -64,7 +64,7 @@ The other configurations that can be used are:
 
 Any of these buffering strategies can be used with multiple threads to render the frames.
 
-Check out SK-AM62P-LP in action, running LVGL's benchmark demo:
+Check out i.MX 93 Evaluation Kit in action, running LVGL's benchmark demo:
 
 <a href="https://www.youtube.com/watch?v=BwlU0H-azSA">
     <img src="https://github.com/user-attachments/assets/b4a27838-8fd0-4944-b9ed-a0a7101e0284" width="50%" alt="image">
