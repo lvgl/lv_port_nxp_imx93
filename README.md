@@ -60,6 +60,7 @@ The other configurations that can be used are:
 
 -   DRM
 -   Wayland
+-   SDL
 
 Any of these buffering strategies can be used with multiple threads to render the frames.
 
@@ -142,37 +143,39 @@ The board should boot and the screen should display something
 
 There are two options:
 
--   **Option 1**: build Yocto image:
+- **Option 1**: build Yocto image:
 
-    -   Required packages to install on host:
+  -   Required packages to install on host:
 
-        ```bash
-        sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1
-        ```
+      ```bash
+      sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd liblz4-tool file locales libacl1
+      ```
 
-    -   (optional) If you already have the "repo utility", skip this step.
+  -   (optional) If you already have the "repo utility", skip this step.
 
-        ```bash
-        sudo apt install repo
-        ```
+      ```bash
+      sudo apt install repo
+      ```
 
-    -   Clone the yocto project
+  -   Clone the yocto project
 
-        ```bash
-        mkdir imx-yocto-bsp
-        cd imx-yocto-bsp
-        repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-scarthgap -m imx-6.6.23-2.0.0.xml
-        repo sync
-        ```
+      ```bash
+      mkdir imx-yocto-bsp
+      cd imx-yocto-bsp
+      repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-scarthgap -m imx-6.6.23-2.0.0.xml
+      repo sync
+      ```
 
-    -   Build the image
+  -   Build the image
 
-        ```bash
-        # Use the script to setup the build folder and modify the conf files
-        DISTRO=fsl-imx-wayland MACHINE=imx93-11x11-lpddr4x-evk source imx-setup-release.sh -b build-media
-        # Build the image
-        bitbake imx-image-multimedia
-        ```
+      ```bash
+      # Use the script to setup the build folder and modify the conf files
+      DISTRO=fsl-imx-wayland MACHINE=imx93-11x11-lpddr4x-evk source imx-setup-release.sh -b build-media
+      # Build the image
+      bitbake imx-image-multimedia
+      ```
+      
+  - A tutorial to get lvgl recipe setup on Yocto is provided in [LVGL official documentation - Yocto](https://docs.lvgl.io/master/details/integration/os/yocto/lvgl_recipe.html)
 
 -   **Option 2**: download a pre-built image:
     The board comes supplied with an image on the EMMC. First we replicate this setup on the SD card:
@@ -202,7 +205,7 @@ This guide was tested on Ubuntu 22.04 host.
 
 -   Follow this [tutorial](https:/www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) to install and setup docker on your system.
 
--   Support to run ARM64 docker containers on the host:
+-   Support to run arm64 docker containers on the host:
 
     ```bash
     sudo apt-get install qemu-user-static
@@ -256,7 +259,7 @@ Run the executable on the target:
 -   Then transfer the executable on the board:
 
     ```
-    scp lvgl_port_linux/bin/lvgl-app root@<BOARD_IP>:/root
+    scp lv_port_linux/bin/lvgl-app root@<BOARD_IP>:/root
     ```
 
 -   Start the application
@@ -273,26 +276,18 @@ Run the executable on the target:
 
 ### Change configuration
 
-Some configurations are provided in the folder `lvgl_conf_example` . For more details about the `lv_conf.h` options, you can have a look to [lvgl documentation]()
+Some configurations are provided in the folder `lvgl_conf_example` .
 
-The default configuration used is lv_conf_fb_4_threads.h. To change the configuration, modify the `lvgl_port_linux/lv_conf.h` file with the desired configuration.
-
-Also modify the `lv_port_linux/CMakelists.txt` file option:
-
--   LV_USE_WAYLAND
--   LV_USE_SDL
--   LV_USE_DRM
-
-Default is for fbdev backend. Only set 1 of these options to "ON" and ensure it's coherent with `lv_conf.h`. This can also be changed from the script `scripts/build_app.sh`.
+The default configuration used is lv_conf_fb_4_threads.h. To change the configuration, modify the `lv_port_linux/lv_conf.h` file with the desired configuration.
 
 ### Start with your own application
 
-The folder `lvgl_port_linux` is an example of an application using LVGL.
+The folder `lv_port_linux` is an example of an application using LVGL.
 
 LVGL is integrated as a submodule in the folder. To change the version of the library:
 
 ```bash
-cd lvgl_port_linux
+cd lv_port_linux
 git checkout <branch_name_or_commit_hash>
 ```
 
@@ -313,7 +308,7 @@ The main steps to create your own application are:
 If there is any problem with the output folder generated permissions, modify the permissions:
 
 ```bash
-sudo chown -R $(whoami):$(whoami) lvgl_port_linux/bin
+sudo chown -R $(whoami):$(whoami) lv_port_linux/bin
 ```
 
 ### Fbdev example runtime error
