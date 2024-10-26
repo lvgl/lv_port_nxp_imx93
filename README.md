@@ -281,7 +281,7 @@ Run the executable on the target:
 -   Then transfer the executable on the board:
 
     ```
-    scp lv_port_linux/bin/lvgl-app root@<BOARD_IP>:/root
+    scp lv_port_linux/bin/lvglsim root@<BOARD_IP>:/root
     ```
 
 -   Start the application
@@ -293,7 +293,7 @@ Run the executable on the target:
     systemctl stop weston.socket
     systemctl stop weston.service
     ######################################
-    ./lvgl-app
+    ./lvglsim
     ```
 
 ### Change configuration
