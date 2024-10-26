@@ -1,3 +1,4 @@
-[submodule "lv_benchmark"]
-	path = lv_benchmark
-	url = https://github.com/EDGEMTech/lv_benchmark.git
+
+[submodule "lv_port_linux"]
+	path = lv_port_linux
+	url = https://github.com/lvgl/lv_port_linux.git
