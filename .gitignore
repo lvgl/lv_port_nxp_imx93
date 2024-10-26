@@ -51,6 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-lv_benchmark/bin
-lv_benchmark/build-arm64
-lv_benchmark/protocols
+lv_port_linux/bin
+lv_port_linux/build-arm64
+lv_port_linux/protocols
