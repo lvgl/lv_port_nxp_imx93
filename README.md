@@ -12,7 +12,7 @@ You can purchase the i.MX 93 Evaluation Kit from [NXP website](https://www.nxp.c
 
 
 <a href="https://www.youtube.com/watch?v=BwlU0H-azSA">
-    <img src="https://github.com/user-attachments/assets/bafd50d8-0daf-4635-928c-33fb21f41e9f" width="50%" alt="image">
+    <img src="https://github.com/user-attachments/assets/bafd50d8-0daf-4635-928c-33fb21f41e9f" width="75%" alt="image">
 </a>
 
 The default buffering is fbdev.
