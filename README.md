@@ -10,6 +10,11 @@ You can purchase the i.MX 93 Evaluation Kit from [NXP website](https://www.nxp.c
 
 ## Benchmark
 
+
+<a href="https://www.youtube.com/watch?v=BwlU0H-azSA">
+    <img src="https://github.com/user-attachments/assets/bafd50d8-0daf-4635-928c-33fb21f41e9f" width="50%" alt="image">
+</a>
+
 The default buffering is fbdev.
 
 **Frame buffer, 1 thread**
@@ -65,10 +70,6 @@ The other configurations that can be used are:
 Any of these buffering strategies can be used with multiple threads to render the frames.
 
 Check out i.MX 93 Evaluation Kit in action, running LVGL's benchmark demo:
-
-<a href="https://www.youtube.com/watch?v=BwlU0H-azSA">
-    <img src="https://github.com/user-attachments/assets/b4a27838-8fd0-4944-b9ed-a0a7101e0284" width="50%" alt="image">
-</a>
 
 ## Specification
 
