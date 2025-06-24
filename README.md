@@ -169,20 +169,23 @@ There are two options:
       ```bash
       mkdir imx-yocto-bsp
       cd imx-yocto-bsp
-      repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-scarthgap -m imx-6.6.23-2.0.0.xml
+      repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-scarthgap -m imx-6.12.3-1.0.0.xml
       repo sync
       ```
 
-  -   Build the image
+  -   Build the image and the sdk
 
       ```bash
       # Use the script to setup the build folder and modify the conf files
       DISTRO=fsl-imx-wayland MACHINE=imx93-11x11-lpddr4x-evk source imx-setup-release.sh -b build-media
       # Build the image
       bitbake imx-image-multimedia
+      # Build with the SDK and install it (optional but recommended)
+      bitbake imx-image-multimedia -c populate_sdk
+      ./tmp/deploy/sdk/fsl-imx-wayland-glibc-x86_64-imx-image-multimedia-armv8a-imx93-11x11-lpddr4x-evk-toolchain-6.12-styhead.sh
       ```
-      
-  - A tutorial to get lvgl recipe setup on Yocto is provided in [LVGL official documentation - Yocto](https://docs.lvgl.io/master/details/integration/os/yocto/lvgl_recipe.html)
+
+  -   A tutorial to get lvgl recipe setup on Yocto is provided in [LVGL official documentation - Yocto](https://docs.lvgl.io/master/details/integration/os/yocto/lvgl_recipe.html)
 
 -   **Option 2**: download a pre-built image:
     The board comes supplied with an image on the EMMC. First we replicate this setup on the SD card:
@@ -204,20 +207,7 @@ cp imx93-11x11-evk-boe-wxga-lvds-panel.dtb imx93-11x11-evk.dtb
 
 This modification can also be applied using the file manager.
 
-### Software setup
-
-This guide was tested on Ubuntu 22.04 host.
-
-#### Install docker
-
--   Follow this [tutorial](https:/www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) to install and setup docker on your system.
-
--   Support to run arm64 docker containers on the host:
-
-    ```bash
-    sudo apt-get install qemu-user-static
-    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-    ```
+### Build and run your application
 
 #### Install utilities
 
@@ -225,7 +215,7 @@ This guide was tested on Ubuntu 22.04 host.
 sudo apt install picocom nmap
 ```
 
-### Run the default project
+#### Prepare the application environnement
 
 Clone the repository:
 
@@ -249,6 +239,35 @@ git clone --recurse-submodules https://github.com/lvgl/lv_port_nxp_imx93.git
   ```bash
   cp lv_conf_example/lv_conf_fb_2_threads.h lv_port_linux/lv_conf.h
   ```
+
+#### Build using the SDK 
+
+-   Source the SDK
+    ```bash
+    # Modify the path according to where you've installed the SDK
+    source /opt/fsl-imx-wayland/6.12-styhead/environment-setup-armv8a-poky-linux
+    ```
+
+-   Build your application
+
+    ```bash
+    cd lv_port_linux
+    cmake -B build
+    cmake --build build -j$(nproc)
+    ```
+
+#### Build using Docker
+
+-   Follow this [tutorial](https:/www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) to install and setup docker on your system.
+
+-   Support to run arm64 docker containers on the host:
+
+    ```bash
+    sudo apt-get install qemu-user-static
+    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    ```
+
+
 Build the docker image and the lvgl benchmark application:
 
 ```bash
@@ -256,6 +275,8 @@ cd lv_port_nxp_imx93
 ./scripts/docker_setup.sh --create-image
 ./scripts/docker_setup.sh --build-app
 ```
+
+#### Run on the target board 
 
 Run the executable on the target:
 
